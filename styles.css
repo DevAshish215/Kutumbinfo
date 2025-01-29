@@ -698,7 +698,7 @@ section {
 /* First bar */
 .bar1 {
     top: 15%;
-    left: 100%;
+    left: 90%;
     animation-delay: 0s;
     width: 180px;
 }
@@ -706,7 +706,7 @@ section {
 /* Second bar */
 .bar2 {
     top: 5%;
-    left: 105%;
+    left: 95%;
     animation-delay: 0.2s;
     width: 100px;
 }
@@ -714,7 +714,7 @@ section {
 /* Third bar */
 .bar3 {
     top: 25%;
-    left: 120%;
+    left: 110%;
     animation-delay: 0.4s;
     width: 110px;
 }
@@ -722,7 +722,7 @@ section {
 /* Fourth bar */
 .bar4 {
     top: 45%;
-    left: 20%;
+    left: 10%;
     animation-delay: 0.6s;
     width: 100px;
 }
@@ -730,14 +730,14 @@ section {
 /* Fifth bar */
 .bar5 {
     top: 55%;
-    left: 10%;
+    left: 0%;
     animation-delay: 0.6s;
     width: 180px;
 }
 /* sixth bar */
 .bar6 {
     top: 65%;
-    left: 40%;
+    left: 30%;
     animation-delay: 0.4s;
     width: 70px;
 }
@@ -745,7 +745,7 @@ section {
 /* seventh bar */
 .bar7 {
     top: 78%;
-    left: 110%;
+    left: 100%;
     animation-delay: 0.6s;
     width: 90px;
 }
@@ -753,7 +753,7 @@ section {
 /* Eighth bar */
 .bar8 {
     top: 88%;
-    left: 102%;
+    left: 90%;
     animation-delay: 0.6s;
     width: 100px;
 }
