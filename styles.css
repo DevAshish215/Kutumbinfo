@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
+
 /* Main container for alignment */
 .main-container {
     max-width: 1200px; /* Restrict the content width */
@@ -25,31 +26,19 @@ section {
     width: 100vw; /* Full viewport width */
     position: relative; /* Ensure content is positioned correctly */
     left: 50%; /* Move to the center */
-    right: 50%; /* Move to the center */
-    margin-left: -50vw; /* Offset half the width */
-    margin-right: -50vw; /* Offset half the width */
+    transform: translateX(-50%); /* Center the section */
 }
-
-
 
 .navbar {
-    position: fixed !important;
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Span the full width of the viewport */
     display: flex;
     align-items: center;
-    justify-content: center; /* Evenly distribute the content */
-    padding: 0px 20px; /* Add some padding for better aesthetics */
-    background-color: #fff; /* Set background color */
-    border-bottom: 1px solid #ddd; /* Add a subtle bottom border */
-    z-index: 1300; /* Ensure it stays above other elements */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    box-sizing: border-box; /* Include padding in the total width */
-    
+    justify-content: center; /* Adjust for better layout */
+    padding: 0px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    z-index: 1200;
 }
-
-
 
 .navbar img {
     height: 50px;
@@ -62,16 +51,12 @@ section {
     text-decoration: none;
     color: #003366;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.9em;
     position: relative;
     display: inline-block;
     height: 100%; /* Extend to full navbar height */
     line-height: 90px; /* Adjust to match navbar height */
     white-space: nowrap; /* Prevent text wrapping */
-}
-
-.navbar a:hover {
-    /* Add hover styles */
 }
 
 .navbar a.no-arrow::after {
@@ -104,12 +89,138 @@ section {
     width: 100%; /* Expand to full width on hover */
 }
 
+/* Dropdown */
+.navbar {
+    position: relative;
+}
+
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 2px #6eaf2a;
+    padding: 1vw 20vw 1vw 30vw; /* Top, right, bottom, left */
+    z-index: 1000;
+    width: 50vw;
+}
+
+.navbar .dropdown:hover .dropdown-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Two columns */
+    gap: 20px;
+    justify-content: end; /* Align items to the right */
+    padding: 1vw 20vw 1vw 40vw; /* Top, right, bottom, left */
+}
+
+.dropdown-box {
+    width: 25vw; /* Adjust width to fit two boxes nicely */
+    border: 1px solid #e0e1dd;
+    padding: 10px 0 5px 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    color: #003366;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 10px;
+   
+}
+
+.dropdown-box strong {
+    color: #41710d;
+    transition: color 0.3s ease;
+}
+
+.dropdown-box img {
+    width: 40px; /* Ensure consistent size */
+    height: 40px;
+    border-radius: 50%; /* Ensure circular icons */
+    background-color: #ffffff; /* Default background */
+    padding: 10px; /* Increase the background size */
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-text {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    justify-content: center;
+}
+
+.dropdown-text p {
+    /* Add spacing between strong and description */
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Hover effect for the entire dropdown box */
+.dropdown-box:hover {
+    /* Green on hover */
+    color: #003366;
+}
+
+.dropdown-box:hover img {
+    background-color: #acf063; /* Change icon background on hover */
+}
+
+.dropdown-box:hover strong {
+    color: #003366;
+}
+
+/* Ensure the dropdown remains open when hovering over the dropdown-content */
+.navbar .dropdown:hover .dropdown-content,
+.navbar .dropdown-content:hover {
+    display: grid;
+}
+
+/* Keep the horizontal bar visible when hovering over the dropdown-content */
+.navbar .dropdown:hover > a::before,
+.navbar .dropdown-content:hover > .dropdown-box a::before {
+    width: 100%;
+}
+
+/* Disable hover effect on the elements with the 'hover-block' class */
+.hover-block:hover img {
+    background-color: #ffffff;
+}
+.dropdown-box-width {
+    width: 35vw; /* Apply the width globally */
+}
+
+
+/* Style for the hamburger menu */
+.menu-toggle {
+    display: none;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start;
+        flex-direction: row; /* Align items horizontally */
+        justify-content: space-between; /* Space between logo and menu toggle */
         padding: 10px;
+    }
+
+    .menu-toggle {
+        display: flex; /* Show menu toggle on smaller screens */
+    }
+
+    .navbar a,
+    .navbar .dropdown {
+        display: none; /* Hide navbar links initially */
+    }
+
+    .navbar.show a,
+    .navbar.show .dropdown {
+        display: block; /* Show links when navbar is expanded */
+        width: 100%; /* Full width for links */
+        margin-top: 10px;
+    }
+
+    .navbar {
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        align-items: center; /* Center logo and toggle vertically */
     }
 
     .navbar img {
@@ -123,118 +234,167 @@ section {
     }
 }
 
+/* Updated Media Query for 480px */
 @media (max-width: 480px) {
     .navbar {
-        padding: 5px 10px; /* Reduce padding for smaller screens */
+        padding: 15px 15px; /* Reduce padding for smaller screens */
+        background-color: white;
     }
 
     .navbar a {
-        font-size: 10px; /* Even smaller font size */
-        margin: 3px 0; /* More compact spacing */
+        font-size: 1.15rem; /* Adjust font size */
+        margin: 0.1875rem 0; /* Compact spacing */
+        color: #003366;
+        text-decoration: none;
+        border-bottom: 1.5px solid rgb(231, 231, 231); /* Add grey line below */
     }
+
+    /* Remove horizontal bar */
+    .navbar a::before {
+        content: none;
+    }
+
+    /* Add thick red line below strong elements */
+    .dropdown-box strong {
+        font-size: 1.08rem; /* Adjust font size */
+        color: #003366;
+        margin: 5px 0; /* Add space above and below */
+        display: inline-block; /* Ensure strong behaves like a block for the border */
+        border-bottom: 1.5px solid rgb(231, 231, 231); /* Add thick red line below */
+        
+    }
+
+    /* Remove hover effect on strong */
+    .dropdown-box:hover strong {
+        color: #003366;
+    }
+
+    /* Remove images and paragraphs in dropdown boxes */
+    .navbar .dropdown-box img,
+    .navbar .dropdown-box p {
+        display: none;
+    }
+
+    /* Remove styling for dropdown, dropdown-content, and dropdown-box */
+    .navbar .dropdown,
+    .navbar .dropdown-content,
+    .navbar .dropdown-box {
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        border: none; /* Remove border */
+        box-shadow: none;
+        background: none;
+    }
+
+    /* Add space above and below dropdown box */
+    .navbar .dropdown-box {
+        padding: 10px 0; /* Add space above and below */
+        width: 100vw; /* Ensure full-width layout */
+    }
+
+    .navbar a::after {
+        content: '▼'; /* Down arrow symbol */
+        font-size: 15px;
+
+    }
+
+    /* Change arrow to up when dropdown is active */
+    .navbar .dropdown.active > a::after {
+        content: '▲'; /* Up arrow symbol */
+    }
+
+    .navbar .dropdown .dropdown-content {
+        padding: 5px 0 0 0; /* Adjust padding */
+    }
+
+    .navbar .dropdown:hover .dropdown-content {
+        padding: 5px 0 0 0; /* Adjust padding */
+    }
+
+    /* Specific adjustment for Services dropdown */
+    .navbar .dropdown {
+        position: relative;
+    }
+
+    /* Remove padding and margin of ul */
+    .navbar .dropdown-box ul {
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        list-style-type: none; /* Remove default bullet points */
+        margin-left: 10px;
+        margin-top: 5px;
+        font: 1.1em sans-serif;
+    }
+        /* Add space above and below <li> elements */
+        .navbar .dropdown-box ul li {
+            margin: 10px 0; /* Add space above and below each <li> */
+            padding: 0; /* Remove any padding if necessary */
+        }
+    .navbar .dropdown.active .dropdown-content {
+        display: block;
+        position: static;
+        margin-top: 0; /* No margin */
+    }
+
+    .navbar .dropdown:not(.active) .dropdown-content {
+        display: none;
+    }
+
+    /* Hide other dropdown-box content for smaller screens */
+    .navbar .dropdown.active .dropdown-box {
+        display: block;
+        width: 100%;
+        margin: 0; /* No margin */
+    }
+
+    .navbar .dropdown:not(.active) .dropdown-box {
+        display: none;
+    }
+
+
+    /* Style for the hamburger menu */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 1.6rem;
+    width: 2.2rem;
+    cursor: pointer;
+    z-index: 1500;
+    background: none;
+    border: none;
+    position: relative; /* Positioning for absolute child elements */
 }
 
-        /* dropdown */
-        .navbar {
-            position: relative;
-        }
+.menu-toggle span {
+    background: #003366;
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-        .navbar .dropdown-content {
-            display: none;
-            position: absolute;
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 1px 2px #6eaf2a;
-            padding: 1vw 20vw 1vw 30vw; /* Top, right, bottom, left */
-            z-index: 1000;
-            width: 50vw;
-        }
+/* Create the "X" effect */
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
 
-        .navbar .dropdown:hover .dropdown-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Two columns */
-            gap: 20px;
-            justify-content: end; /* Align items to the right */
-            padding: 1vw 20vw 1vw 40vw; /* Top, right, bottom, left */
-        }
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
 
-        .dropdown-box {
-            width: 25vw; /* Adjust width to fit two boxes nicely */
-            border: 1px solid #e0e1dd;
-            padding: 10px 0 5px 5px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            color: #003366;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            display: flex;
-            align-items: flex-start;
-            border-radius: 10px;
-            /*gap: 0px;  Space between image and text */
-        }
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
 
-        .dropdown-box strong {
-            color: #41710d;
-            transition: color 0.3s ease;
-        }
+}
 
-        .dropdown-box img {
-            width: 40px; /* Ensure consistent size */
-            height: 40px;
-            border-radius: 50%; /* Ensure circular icons */
-            background-color: #ffffff; /* Default background */
-            padding: 10px; /* Increase the background size */
-            transition: background-color 0.3s ease;
-        }
 
-        .dropdown-text {
-            display: flex;
-            flex-direction: column; /* Stack text vertically */
-            justify-content: center;
-        }
-
-        .dropdown-text p {
-            
-             /* Add spacing between strong and description */
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        /* Hover effect for the entire dropdown box */
-        .dropdown-box:hover {
-            /* Green on hover */
-            color: #003366;
-        }
-
-        .dropdown-box:hover img {
-            background-color: #acf063; /* Change icon background on hover */
-        }
-
-        .dropdown-box:hover strong {
-            color: #003366;
-        }
-
-        /* Ensure the dropdown remains open when hovering over the dropdown-content */
-        .navbar .dropdown:hover .dropdown-content,
-        .navbar .dropdown-content:hover {
-            display: grid;
-        }
-
-        /* Keep the horizontal bar visible when hovering over the dropdown-content */
-        .navbar .dropdown:hover > a::before,
-        .navbar .dropdown-content:hover > .dropdown-box a::before {
-            width: 100%;
-        }
-
-        /* Disable hover effect on the elements with the 'hover-block' class */
-        .hover-block:hover img{
-            background-color: #ffffff;
-        }
 
 /* Hero Section */
 .hero {
    
-    height: 37rem;
+    height: 32rem;
     background-color: #0d3e5c;
     display: flex;
     align-items: center;
@@ -250,7 +410,7 @@ section {
     margin-right: auto; /* Align content to the left within the flex container */
     text-align: left; /* Ensure text remains left-aligned */
     animation: slideUp 0.7s ease-out forwards;
-    top: 12rem; /* Move the hero content down */
+    top: 8rem; /* Move the hero content down */
 }
 
 .hero-content h1 {
@@ -294,11 +454,9 @@ section {
     align-items: center;
     justify-content: center;
     animation: slideUp 0.7s ease-out forwards;
-    top: -9rem; /* Adjust this value to move it down */
+    top: -12rem; /* Adjust this value to move it down */
     z-index: 2; /* Ensure it appears above other elements */
 }
-
-
 
 /* Ensure the ring masks the content */
 .hero .ring-wrapper {
@@ -309,6 +467,7 @@ section {
     /* top: 0%; */
     transform: translateY(-50%);
 }
+
 /* Media Queries for Smaller Screens */
 @media (max-width: 768px) {
     .hero {
@@ -328,8 +487,34 @@ section {
         top: 0; /* Reset top positioning for smaller screens */
     }
 }
+/* Adjust hero section for screens 480px and smaller */
+@media (max-width: 480px) {
 
 
+    .hero-content {
+        top: 0; /* Reset any top offset */
+        margin-top: 0; /* Ensure it starts below the navbar */
+        max-width: 80%; /* Expand content width for readability */
+        top:8rem;
+       
+    }
+
+    .hero {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ring-wrapper {
+        width: 50%; /* Reduce size */
+        height: 50%; /* Reduce size */
+        position: absolute;
+        top: 4rem; /* Align to top */
+        right: 0; /* Align to right */
+        transform: scale(1.5); /* Slightly enlarge */
+        filter: blur(15px); /* Apply blur effect */
+        z-index: -1; /* Send it behind hero content */
+    }
+}
 
 /* Ensure the inner ring masks the content */
 .ring {
@@ -640,6 +825,15 @@ section {
     }
 }
 
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem; /* Reduce font size */
+        line-height: 1.1; /* Decrease height */
+        margin: 0; /* Adjust top and bottom spacing */
+        padding: 0;
+    }
+}
+
 /* Show class triggers the slide-up animation */
 .we-are-subsection.show {
     animation: slideUp1 1s ease-out forwards;
@@ -829,8 +1023,22 @@ section {
     }
 }
 
+/* Adjust counter boxes layout for screens 480px and smaller */
+@media (max-width: 480px) {
+    .counter-container {
+        display: grid; /* Use grid layout for a 2x2 structure */
+        grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+        gap: 10px; /* Add space between the boxes */
+        justify-items: center; /* Center-align items */
+    }
 
-/* Testimonials Section */
+    .counter-box {
+        width: 80%; /* Ensure the boxes are responsive within the grid */
+        padding: 15px; /* Add padding for spacing within the boxes */
+    }
+}
+
+
  
 
 /* Newsletter Section */

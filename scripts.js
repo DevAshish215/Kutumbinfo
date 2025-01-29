@@ -83,3 +83,33 @@ weAreSubsections.forEach(subsection => {
         setInterval(rotateTestimonials, 3000); // Rotate every 3 seconds
 
 
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+        
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+            menuToggle.classList.toggle('open'); // Toggle "X" state
+        });
+        
+        
+
+
+        document.querySelectorAll('.navbar .dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const parentDropdown = this.parentElement;
+        
+                // Toggle the current dropdown
+                parentDropdown.classList.toggle('active');
+        
+                // Close other dropdowns
+                document.querySelectorAll('.navbar .dropdown').forEach(dropdown => {
+                    if (dropdown !== parentDropdown) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        
+        
