@@ -89,6 +89,12 @@ section {
     width: 100%; /* Expand to full width on hover */
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Adjust spacing between links */
+}
+
 /* Dropdown */
 .navbar {
     position: relative;
@@ -237,56 +243,72 @@ section {
 /* Updated Media Query for 480px */
 @media (max-width: 480px) {
     .navbar {
-        padding: 15px 15px; /* Reduce padding for smaller screens */
-        background-color: white;
+        background-color: #002f45; /* Dark blue background for the navbar */
+        color: white; /* Text color */
+        padding: 0; /* Remove padding */
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+        width: 100%;
+        padding: 0 40px; /* Add left and right padding */
+        gap: 0px; /* Add spacing between menu items */
+    }
+    .navbar .logo {
+        background-color: white; /* White background for the logo container */
+        padding: 10px; /* Add padding inside the logo container */
+        width: 100%; /* Ensure the logo spans the full width */
+        display: flex; /* Flexbox for horizontal alignment */
+        align-items: center; /* Center align items vertically */
+        justify-content: space-between; /* Space between the logo and the toggle button */
+        margin: 0; /* Remove any margin */
     }
 
+    .navbar .logo img {
+        max-height: 50px; /* Restrict the logo height */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
     .navbar a {
         font-size: 1.15rem; /* Adjust font size */
         margin: 0.1875rem 0; /* Compact spacing */
-        color: #003366;
+        color: white; /* White text for links */
         text-decoration: none;
-        border-bottom: 1.5px solid rgb(231, 231, 231); /* Add grey line below */
+        border-bottom: 1.5px solid #003366; /* Subtle blue line below */
     }
 
-    /* Remove horizontal bar */
     .navbar a::before {
-        content: none;
+        content: none; /* Remove horizontal bar */
     }
 
-    /* Add thick red line below strong elements */
     .dropdown-box strong {
         font-size: 1.08rem; /* Adjust font size */
-        color: #003366;
+        color: white; /* White text for strong elements */
         margin: 5px 0; /* Add space above and below */
-        display: inline-block; /* Ensure strong behaves like a block for the border */
-        border-bottom: 1.5px solid rgb(231, 231, 231); /* Add thick red line below */
-        
+        display: inline-block; /* Ensure block behavior for border */
+        border-bottom: 1.5px solid #003366; /* Subtle blue line below */
     }
 
-    /* Remove hover effect on strong */
     .dropdown-box:hover strong {
-        color: #003366;
+        color: white; /* No hover effect on strong */
     }
 
-    /* Remove images and paragraphs in dropdown boxes */
     .navbar .dropdown-box img,
     .navbar .dropdown-box p {
-        display: none;
+        display: none; /* Hide images and paragraphs in dropdowns */
     }
 
-    /* Remove styling for dropdown, dropdown-content, and dropdown-box */
     .navbar .dropdown,
     .navbar .dropdown-content,
     .navbar .dropdown-box {
         padding: 0; /* Remove padding */
         margin: 0; /* Remove margin */
-        border: none; /* Remove border */
+        border: none; /* Remove borders */
         box-shadow: none;
         background: none;
     }
 
-    /* Add space above and below dropdown box */
     .navbar .dropdown-box {
         padding: 10px 0; /* Add space above and below */
         width: 100vw; /* Ensure full-width layout */
@@ -295,10 +317,9 @@ section {
     .navbar a::after {
         content: '▼'; /* Down arrow symbol */
         font-size: 15px;
-
+        color: white; /* Match arrow color with text */
     }
 
-    /* Change arrow to up when dropdown is active */
     .navbar .dropdown.active > a::after {
         content: '▲'; /* Up arrow symbol */
     }
@@ -311,12 +332,10 @@ section {
         padding: 5px 0 0 0; /* Adjust padding */
     }
 
-    /* Specific adjustment for Services dropdown */
     .navbar .dropdown {
         position: relative;
     }
 
-    /* Remove padding and margin of ul */
     .navbar .dropdown-box ul {
         padding: 0; /* Remove padding */
         margin: 0; /* Remove margin */
@@ -325,11 +344,12 @@ section {
         margin-top: 5px;
         font: 1.1em sans-serif;
     }
-        /* Add space above and below <li> elements */
-        .navbar .dropdown-box ul li {
-            margin: 10px 0; /* Add space above and below each <li> */
-            padding: 0; /* Remove any padding if necessary */
-        }
+
+    .navbar .dropdown-box ul li {
+        margin: 10px 0; /* Add space above and below each <li> */
+        padding: 0; /* Remove padding */
+    }
+
     .navbar .dropdown.active .dropdown-content {
         display: block;
         position: static;
@@ -340,7 +360,6 @@ section {
         display: none;
     }
 
-    /* Hide other dropdown-box content for smaller screens */
     .navbar .dropdown.active .dropdown-box {
         display: block;
         width: 100%;
@@ -351,42 +370,39 @@ section {
         display: none;
     }
 
+    /* Hamburger Menu Style */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 1.6rem;
+        width: 2.2rem;
+        cursor: pointer;
+        z-index: 1500;
+        background: none;
+        border: none;
+        position: relative; /* Positioning for absolute child elements */
+    }
 
-    /* Style for the hamburger menu */
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 1.6rem;
-    width: 2.2rem;
-    cursor: pointer;
-    z-index: 1500;
-    background: none;
-    border: none;
-    position: relative; /* Positioning for absolute child elements */
-}
+    .menu-toggle span {
+        background: #003366; /* White bars */
+        height: 3px;
+        width: 100%;
+        border-radius: 3px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-.menu-toggle span {
-    background: #003366;
-    height: 3px;
-    width: 100%;
-    border-radius: 3px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
 
-/* Create the "X" effect */
-.menu-toggle.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0; /* Hide the middle bar */
+    }
 
-.menu-toggle.open span:nth-child(2) {
-    opacity: 0; /* Hide the middle bar */
-}
-
-.menu-toggle.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
 }
 
 
@@ -760,12 +776,13 @@ section {
 
 /* We Are Section */
 .we-are-section {
-    /* padding: 0px 10%; */
+    
     background-color: #f9f9f9;
     text-align: center;
     color: #003366;
     padding-bottom: 2rem;
     padding-top: 2rem;
+
 }
 
 .we-are-section h2 {
@@ -776,7 +793,7 @@ section {
 
 .we-are-content {
     display: flex;
-    justify-content: space-between;  /* Distribute items evenly with space between */
+    justify-content: center;  /* Distribute items evenly with space between */
     gap: 20px;  /* Add space between each subsection */
     flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
     margin-top: 30px; /* Adjust the top margin for spacing */
@@ -795,7 +812,7 @@ section {
 }
 /* Initially hide the subsections */
 .we-are-subsection {
-    width: 28%; /* Ensure each subsection takes up 28% of the container */
+    width: 27%; /* Ensure each subsection takes up 28% of the container */
     padding: 20px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -852,10 +869,18 @@ section {
 }
 
 .we-are-icon {
-    width: 60px;
+    width: 60px; /* Adjust as needed */
     height: 60px;
-    margin-bottom: 15px;
+    padding: 10px; /* Add space between the image and the border */
+    background-color: white; /* Background inside the circle */
+    border: 3px solid #6eaf2a; /* Green border */
+    border-radius: 50%; /* Make it a perfect circle */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+     /* Optional glowing effect */
 }
+
 
 @keyframes slideUp1 {
     from {
@@ -873,7 +898,7 @@ section {
 .why-choose-us-section {
     padding-bottom: 2rem;
     padding-top: 2rem;
-    /* padding: 0px 10%; */
+    
     background-color: #ffffff; /* Match the hero section background color */
     text-align: left;
     color: #003366; /* Light text color for contrast */
@@ -882,14 +907,14 @@ section {
 
 
 .why-choose-us-section h2 {
-    padding-left: 2%;
+    padding-left: 5%;
     font-size: 2em;
     margin-bottom: 20px;
     color: #003366; /* Light text color */
 }
 
 .why-choose-us-section .subheading {
-    padding-left: 2%;
+    padding-left: 5%;
     font-size: 1em;
     margin-bottom: 10px;
     color: #16548a; /* Slightly lighter shade for the subheading */
@@ -897,13 +922,13 @@ section {
 
 .why-choose-us-content {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .why-choose-us-item {
-    width: 28%;
+    width: 27%;
     padding: 20px;
     background-color: #ffffff;
     /* border-radius: 12px; */
@@ -967,6 +992,7 @@ section {
     padding: 10px;
     background-color: #0d3e5c;
     text-align: center;
+    padding-bottom: 30px;
     
 }
 
@@ -978,8 +1004,8 @@ section {
 
 .counter-container {
     display: flex;
-    justify-content: space-around;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
 }
 
 .counter-box {
@@ -1037,9 +1063,374 @@ section {
         padding: 15px; /* Add padding for spacing within the boxes */
     }
 }
+/* Services Section */
+
+.services-section {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    background-color: #ffffff; /* Match the hero section background color */
+    text-align: left;
+    color: #003366; /* Light text color for contrast */
+    border-top: 1px solid #dfdcdc; /* Dark grey top border */
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    padding-left: 5%;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #003366; /* Light text color */
+}
+
+/* 2x2 Grid Layout */
+.services-container {
+    width: 75vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensures 2 columns */
+    gap: 10px; /* Adjust gap to bring boxes closer */
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+.service-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+    color: #003366;
+    padding: 10px;
+     /* Ensures proper spacing */
+}
+
+/* Circle Icons */
+.service-icon {
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border: 2px solid #9bc842;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Text Content */
+.service-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-content h3 {
+    font-size: 1.3em;
+    color: #003366;
+    margin-bottom: 8px;
+}
+
+.service-content p {
+    font-size: 1em;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr; /* Stack items vertically */
+    }
+}
+
+/* Our Mission Section */
+.our-mission-section {
+    background-color: #003366; /* Same background as hero section */
+    text-align: center;
+    padding: 60px 20px;
+    color: #ffffff; /* Matching text color */
+}
+
+.our-mission-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.mission-title {
+    font-size: 2.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #8cc63f;
+}
+
+.mission-description {
+    font-size: 1.8em;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Our Working Domain Section */
+.working-domain-section {
+    background-color: #ffffff; /* Match website theme */
+    text-align: center;
+    padding: 60px 0;
+    color: #003366;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #003366;
+}
+
+/* Grid Layout */
+.domain-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Each Domain Box */
+.domain-box {
+    background-color: #ffffff;
+    border: 1px solid #000;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Icon Styling */
+.domain-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.domain-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Title Styling */
+.domain-title {
+    font-size: 18px;
+    color: #1d3557;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Description Styling */
+.domain-description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .domain-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .domain-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 
- 
+/* Our Partners Section */
+.our-partners-section {
+    width: 100%;
+    background: linear-gradient(to bottom, #ebeaea, #ffffff); /* Dark blue gradient */
+    padding: 5px 0; /* Increased height */
+    text-align: center;
+    position: relative;
+}
+
+.our-partners-section h2 {
+    font-size: 2.5em;
+    color: #003366; /* White text */
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+/* Slider Container */
+.partner-slider {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+/* Moving Track */
+.partner-track {
+    display: flex;
+    gap: 40px;
+    animation: slide 25s linear infinite;
+    width: calc(200px * 15); /* Wider for smooth looping */
+}
+
+/* Partner Badge Styling */
+.partner {
+    flex: 0 0 auto;
+    width: 180px; /* Adjusted size */
+    height: 120px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Partner Logos */
+.partner img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+/* Hover Effect */
+.partner:hover {
+    transform: scale(1.1);
+}
+
+/* Scroll Animation */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves left continuously */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .partner {
+        width: 140px;
+        height: 100px;
+    }
+
+    .partner-slider {
+        width: 95%;
+    }
+}
+
+/* our values section */
+
+.values-section {
+    background-color: #003366;
+    display: flex;
+  align-items: center;
+  justify-content: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    color:white;
+    gap:150px;
+  }
+  
+  .values-grid {
+    padding-left: 100px;
+    text-align: left;
+  }
+  
+  .values-grid h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color:#8cc63f;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    position: relative;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .grid-item.top-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .grid-item.top-right {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .grid-item.bottom-left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .grid-item.bottom-right {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  .grid::before,
+  .grid::after {
+    content: '';
+    position: absolute;
+    background-color: #8cc63f;
+  }
+  
+  .grid::before {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .grid::after {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .message {
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  .message p {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
 
 /* Newsletter Section */
 .newsletter-section {
@@ -1219,7 +1610,7 @@ section {
      /* About Us Section */
      #about-us {
         padding: 60px 20px;
-        background: #003366; /* Darker background matching the theme */
+        background: #838f9a; /* Darker background matching the theme */
         color: #ffffff;
     }
 
