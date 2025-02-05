@@ -85,10 +85,16 @@ weAreSubsections.forEach(subsection => {
 
         const menuToggle = document.querySelector('.menu-toggle');
         const navbar = document.querySelector('.navbar');
+        const sections = document.querySelectorAll('section'); // Select all sections
         
         menuToggle.addEventListener('click', () => {
             navbar.classList.toggle('show');
             menuToggle.classList.toggle('open'); // Toggle "X" state
+        
+            // Toggle visibility of all sections
+            sections.forEach(section => {
+                section.classList.toggle('hidden'); // Add or remove the "hidden" class
+            });
         });
         
         

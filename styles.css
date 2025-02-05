@@ -255,6 +255,16 @@ section {
         width: 100%;
         padding: 0 40px; /* Add left and right padding */
         gap: 0px; /* Add spacing between menu items */
+        opacity: 0; /* Initially hidden */
+        transform: translateX(100%); /* Start off the screen to the right */
+        transition: opacity 1.5s ease, transform 0.3s ease; /* Smooth transition for both opacity and position */
+    }
+
+    .navbar.show .nav-links {
+        padding-bottom: 25rem; /* Full viewport height when toggled */
+        max-height: 50vh; /* Full viewport height when toggled */
+        opacity: 1; /* Make it visible */
+        transform: translateX(0); /* Move the nav-links into view from the right */
     }
     .navbar .logo {
         background-color: white; /* White background for the logo container */
@@ -276,7 +286,8 @@ section {
         margin: 0.1875rem 0; /* Compact spacing */
         color: white; /* White text for links */
         text-decoration: none;
-        border-bottom: 1.5px solid #003366; /* Subtle blue line below */
+        border-bottom: 2px solid #0f3f70; /* Subtle blue line below */
+        padding-bottom: 5px; /* Add padding to move border down */
     }
 
     .navbar a::before {
@@ -286,9 +297,9 @@ section {
     .dropdown-box strong {
         font-size: 1.08rem; /* Adjust font size */
         color: white; /* White text for strong elements */
-        margin: 5px 0; /* Add space above and below */
+        margin: 0px 0; /* Add space above and below */
         display: inline-block; /* Ensure block behavior for border */
-        border-bottom: 1.5px solid #003366; /* Subtle blue line below */
+        border-bottom: 2px solid #175b6d; /* Subtle blue line below */
     }
 
     .dropdown-box:hover strong {
@@ -407,11 +418,10 @@ section {
 }
 
 
-
 /* Hero Section */
 .hero {
    
-    height: 32rem;
+    height: 30rem;
     background-color: #0d3e5c;
     display: flex;
     align-items: center;
@@ -431,6 +441,7 @@ section {
 }
 
 .hero-content h1 {
+    
     font-size: 2.5em;
     line-height: 1.3;
     font-weight: 500;
@@ -438,6 +449,7 @@ section {
 }
 
 .hero-content p {
+    
     font-size: 1em;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -510,7 +522,7 @@ section {
 
     .hero-content {
         top: 0; /* Reset any top offset */
-        margin-top: 0; /* Ensure it starts below the navbar */
+        margin-top: 3rem; /* Ensure it starts below the navbar */
         max-width: 80%; /* Expand content width for readability */
         top:8rem;
        
@@ -519,6 +531,7 @@ section {
     .hero {
         position: relative;
         overflow: hidden;
+        height : 33rem;
     }
 
     .ring-wrapper {
@@ -787,7 +800,7 @@ section {
 }
 
 .we-are-section h2 {
-    font-size: 2.5em;
+    font-size: 2.1em;
     margin-bottom: 40px;
     color: #003366;
     font-weight: 500;
@@ -1006,7 +1019,7 @@ section {
 
 .counter-section h2 {
     font-weight: 500;
-    font-size: 2.5em;
+    font-size: 2.1em;
     margin-bottom: 20px;
     color: #f7f7f7;
 }
@@ -1089,7 +1102,7 @@ section {
 .section-title {
     font-weight: 500;
     text-align: center;    
-    font-size: 2em;
+    font-size: 2.1em;
     margin-bottom: 20px;
     color: #003366; /* Light text color */
 }
@@ -1178,14 +1191,14 @@ section {
 
 .mission-title {
     
-    font-size: 2.3em;
+    font-size: 2.1em;
     font-weight: 500;
     margin-bottom: 20px;
     color: #8cc63f;
 }
 
 .mission-description {
-    font-size: 1.8em;
+    font-size: 1.7em;
     color: #ffffff;
     line-height: 1.6;
 }
@@ -1199,7 +1212,7 @@ section {
 }
 
 .section-title {
-    font-size: 2em;
+    font-size: 2.1em;
     font-weight: 500;
     margin-bottom: 40px;
     color: #003366;
@@ -1268,16 +1281,20 @@ section {
 
 
 /* Our Partners Section */
-.our-partners-section {
-    width: 100%;
-    background: linear-gradient(to bottom, #ebeaea, #ffffff); /* Dark blue gradient */
-    padding: 5px 0; /* Increased height */
-    text-align: center;
-    position: relative;
-}
 
+.our-partners-section {
+    background: linear-gradient(to bottom, #ebeaea, #ffffff); /* Dark blue gradient */
+    width: 100vw; /* Stretch full viewport width */
+    max-width: 100vw; /* Ensure no restrictions */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); /* Remove container restriction */
+    padding: 5px 5%;
+    text-align: center;
+    color: white;
+}
 .our-partners-section h2 {
-    font-size: 2.5em;
+    font-size: 2.1em;
     color: #003366; /* White text */
     margin-bottom: 50px;
     font-weight: 500;
@@ -1352,14 +1369,18 @@ section {
 .values-section {
     background-color: #003366;
     display: flex;
-  align-items: center;
-  justify-content: flex-start;
-    max-width: 1200px;
-    width: 100%;
-    padding: 20px;
-    color:white;
-    gap:150px;
-  }
+    align-items: center;
+    justify-content: center;
+    width: 100vw; /* Full viewport width */
+    max-width: 100vw; /* Ensure it stretches fully */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); /* Center-aligns and removes container restriction */
+    padding: 20px 5%;
+    color: white;
+    gap: 150px;
+}
+
   
   .values-grid {
     padding-left: 100px;
@@ -1367,7 +1388,7 @@ section {
   }
   
   .values-grid h2 {
-    font-size: 2rem;
+    font-size: 2.1rem;
     margin-bottom: 20px;
     color:#8cc63f;
     font-weight: 500;
@@ -1380,7 +1401,7 @@ section {
     gap: 20px;
     position: relative;
     width: 250px;
-    height: 250px;
+    height: 200px;
   }
   
   .grid-item {
@@ -1446,80 +1467,6 @@ section {
   }
 
 
-/* Newsletter Section */
-.newsletter-section {
-    /* padding: 20px 5%; */
-    background-color: #f7f7f7; /* Match the light gray background */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #e0e0e0; /* Subtle border at the top */
-}
-
-.newsletter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.newsletter-content {
-    display: flex;
-    align-items: center;
-}
-
-.newsletter-label {
-    font-size: 1.2em;
-    color: #003366;
-    margin-right: 10px;
-}
-
-.newsletter-input {
-    width: 300px;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 20px 0 0 20px;
-    outline: none;
-    font-size: 1em;
-    color: #666666;
-}
-
-.newsletter-button {
-    background-color: #8cc63f; /* Match the green button color */
-    color: #003366;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 0 20px 20px 0;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.newsletter-button:hover {
-    background-color: #76a12f; /* Slightly darker green on hover */
-}
-
-.social-follow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.social-follow span {
-    font-size: 1em;
-    color: #003366;
-    margin-right: 10px;
-}
-
-.social-icon img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-}
-
-.social-icon img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
 
  /* Testimonials Section */
  #testimonials {
@@ -1695,63 +1642,100 @@ section {
         font-size: 0.9em;
         color: #cccccc;
     }
+/* Newsletter Section */
+.newsletter-section {
+    background-color: #f7f7f7; /* Match the light gray background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e0e0e0; /* Subtle border at the top */
+}
 
+.newsletter-container {
+    flex: 0 0 30%;
+    background-color: #8cc63f;
+    color: #003366;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.newsletter-content {
+    display: flex;
+    align-items: center;
+}
+
+.newsletter-label {
+    font-size: 1.5em;
+    color: #003366;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #666666;
+    border: 1px solid #003366;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.newsletter-button {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.newsletter-button:hover {
+    background-color: #001f4d;
+}
+
+.social-follow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-follow span {
+    font-size: 1.2em;
+    color: #003366;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: block;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+    margin: 0 5px;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+@media (max-width: 768px) {
+    #about-us .about-column,
     .newsletter-container {
-        flex: 0 0 30%;
-        background-color: #8cc63f;
-        color: #003366;
-        padding: 20px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .newsletter-label {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-    }
-
-    .newsletter-input {
-        width: 100%;
-        padding: 10px;
-        font-size: 1em;
-        margin-bottom: 10px;
-        border: 1px solid #003366;
-        border-radius: 5px;
-    }
-
-    .newsletter-button {
-        padding: 10px 20px;
-        background-color: #003366;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+        flex: 0 0 100%;
         margin-bottom: 20px;
     }
+}
 
-    .newsletter-button:hover {
-        background-color: #001f4d;
-        
-    }
 
-    .social-follow span {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1.2em;
-    }
-
-    .social-icon img {
-        width: 30px;
-        height: 30px;
-        margin: 0 5px;
-    }
-
-    @media (max-width: 768px) {
-        #about-us .about-column,
-        .newsletter-container {
-            flex: 0 0 100%;
-            margin-bottom: 20px;
-        }
-    }
+.hidden {
+    display: none !important; /* Completely hide the section */
+}
