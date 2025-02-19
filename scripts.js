@@ -86,6 +86,7 @@ weAreSubsections.forEach(subsection => {
         const menuToggle = document.querySelector('.menu-toggle');
         const navbar = document.querySelector('.navbar');
         const sections = document.querySelectorAll('section'); // Select all sections
+        const footerPlaceholder = document.getElementById('footer-placeholder'); // Select dynamically loaded footer
         
         menuToggle.addEventListener('click', () => {
             navbar.classList.toggle('show');
@@ -95,7 +96,13 @@ weAreSubsections.forEach(subsection => {
             sections.forEach(section => {
                 section.classList.toggle('hidden'); // Add or remove the "hidden" class
             });
+        
+            // Hide dynamically loaded footer
+            if (footerPlaceholder) {
+                footerPlaceholder.classList.toggle('hidden');
+            }
         });
+        
         
         
 

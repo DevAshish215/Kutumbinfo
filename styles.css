@@ -9,6 +9,42 @@ html, body {
     width: 100%; /* Ensures full width */
 }
 
+
+/* Heading Styles */
+.heading-primary {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #003366;
+}
+
+.heading-secondary {
+    font-size: 2.4em;
+    font-weight: 500;
+    color: #003366;
+}
+
+.heading-tertiary {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #003366;
+}
+
+/* Paragraph Styles */
+.text-paragraph {
+    font-size: 1em;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Background Color Classes */
+.bg-light-gray { background-color: #f4f4f4; }
+.bg-white { background-color: #fff; }
+.bg-dark-blue { background-color: #0d3e5c; }
+.bg-green { background-color: #6eaf2a; }
+.bg-green-hover { background-color: #5b9423; }
+.bg-light { background-color: #f9f9f9; }
+
 /* Main container for alignment */
 .main-container {
     max-width: 1200px; /* Restrict the content width */
@@ -40,7 +76,7 @@ section {
     padding: 0px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: nowrap; /* Allow wrapping for smaller screens */
     z-index: 1200;
 
 }
@@ -439,12 +475,11 @@ section {
     }
 }
 
-
 /* Hero Section */
 .hero {
     max-width: 100vw;
     height: 30rem;
-    background-color: #0d3e5c;
+   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -464,7 +499,7 @@ section {
 
 .hero-content h1 {
     
-    font-size: 2.5em;
+    color: #fff;
     line-height: 1.3;
     font-weight: 500;
     margin-bottom: 2rem;
@@ -472,7 +507,7 @@ section {
 
 .hero-content p {
     
-    font-size: 1em;
+   
     line-height: 1.6;
     margin-bottom: 2rem;
     color: #cdd7e0;
@@ -812,8 +847,7 @@ section {
 
 /* We Are Section */
 .we-are-section {
-    
-    background-color: #f9f9f9;
+
     text-align: center;
     color: #003366;
     padding-bottom: 2rem;
@@ -822,7 +856,7 @@ section {
 }
 
 .we-are-section h2 {
-    font-size: 2.1em;
+    
     margin-bottom: 40px;
     color: #003366;
     font-weight: 500;
@@ -901,13 +935,13 @@ section {
 
 .we-are-subsection h3 {
     font-weight: 510;
-    font-size: 1.5em;
+    
     margin: 20px 0 10px;
     color: #003366;
 }
 
 .we-are-subsection p {
-    font-size: 1em;
+   
     line-height: 1.6;
     color: #666666;
 }
@@ -943,8 +977,7 @@ section {
 .why-choose-us-section {
     padding-bottom: 2rem;
     padding-top: 2rem;
-    
-    background-color: #ffffff; /* Match the hero section background color */
+  /* Match the hero section background color */
     text-align: left;
     color: #003366; /* Light text color for contrast */
     border-top: 1px solid #dfdcdc; /* Dark grey top border */
@@ -954,7 +987,7 @@ section {
 .why-choose-us-section h2 {
     font-weight: 500;
     padding-left: 5%;
-    font-size: 2em;
+   
     margin-bottom: 20px;
     color: #003366; /* Light text color */
 }
@@ -962,7 +995,7 @@ section {
 .why-choose-us-section .subheading {
     
     padding-left: 5%;
-    font-size: 1em;
+    
     margin-bottom: 10px;
     color: #16548a; /* Slightly lighter shade for the subheading */
 }
@@ -1019,13 +1052,13 @@ section {
 
 .why-choose-us-item h3 {
     font-weight: 500;
-    font-size: 1.2em;
+
     color: #003366;
     margin-bottom: 10px;
 }
 
 .why-choose-us-item p {
-    font-size: 1em;
+    
     color: #666666;
     line-height: 1.6;
     margin: 0; /* Remove default margin for better spacing */
@@ -1047,8 +1080,7 @@ section {
 
 /* Counter Section */
 .counter-section {
-    padding: 10px;
-    background-color: #0d3e5c;
+    padding: 10px;   
     text-align: center;
     padding-bottom: 30px;
     
@@ -1056,9 +1088,9 @@ section {
 
 .counter-section h2 {
     font-weight: 500;
-    font-size: 2.1em;
+    
     margin-bottom: 20px;
-    color: #f7f7f7;
+    color: #92df3f;
 }
 
 .counter-container {
@@ -1129,8 +1161,7 @@ section {
 .services-section {
     padding-bottom: 2rem;
     padding-top: 2rem;
-    background-color: #ffffff; /* Match the hero section background color */
-    text-align: left;
+    text-align: center;
     color: #003366; /* Light text color for contrast */
     border-top: 1px solid #dfdcdc; /* Dark grey top border */
     margin: auto;
@@ -1138,8 +1169,6 @@ section {
 
 .section-title {
     font-weight: 500;
-    text-align: center;    
-    font-size: 2.1em;
     margin-bottom: 20px;
     color: #003366; /* Light text color */
 }
@@ -1194,13 +1223,13 @@ section {
 
 .service-content h3 {
     font-weight: 505;
-    font-size: 1.3em;
+  
     color: #003366;
     margin-bottom: 8px;
 }
 
 .service-content p {
-    font-size: 1em;
+   
     color: #666666;
     line-height: 1.6;
     margin: 0;
@@ -1234,10 +1263,9 @@ section {
 }
 
 /* Our Mission Section */
-.our-mission-section {
-    background-color: #003366; /* Same background as hero section */
+.our-mission-section {    
     text-align: center;
-    padding: 60px 20px;
+    padding: 40px 20px;
     color: #ffffff; /* Matching text color */
 }
 
@@ -1249,15 +1277,15 @@ section {
 }
 
 .mission-title {
-    
-    font-size: 2.1em;
+    font-size: 2.4em;
     font-weight: 500;
-    margin-bottom: 20px;
-    color: #8cc63f;
+    /* font-weight: 500; */
+    margin-bottom: 40px;
+    color: #92df3f;
 }
 
 .mission-description {
-    font-size: 1.7em;
+    font-size: 1.2em;
     color: #ffffff;
     line-height: 1.6;
 }
@@ -1267,13 +1295,11 @@ section {
 .working-domain-section {
     background-color: #ffffff; /* Match website theme */
     text-align: center;
-    padding: 60px 0;
-    color: #003366;
+    padding: 40px 0;
     
 }
 
-.section-title {
-    font-size: 2.1em;
+.section-title {  
     font-weight: 500;
     margin-bottom: 40px;
     color: #003366;
@@ -1317,15 +1343,15 @@ section {
 
 /* Title Styling */
 .domain-title {
-    font-size: 18px;
-    color: #1d3557;
-    font-weight: bold;
+   
+    color: #003366;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 /* Description Styling */
 .domain-description {
-    font-size: 14px;
+    
     color: #555;
 }
 
@@ -1357,7 +1383,7 @@ section {
     color: white;
 }
 .our-partners-section h2 {
-    font-size: 2.1em;
+   
     color: #003366; /* White text */
     margin-bottom: 50px;
     font-weight: 500;
@@ -1451,9 +1477,9 @@ section {
   }
   
 .values-grid h2 {
-    font-size: 2.1rem;
+   
     margin-bottom: 20px;
-    color: #8cc63f;
+    color: #92df3f;
     font-weight: 500;
     text-align: center; /* Align h2 to center */
 }
@@ -1523,10 +1549,11 @@ section {
     text-align: center;
   }
   
-  .message p {
-    font-size: 2rem;
-    font-weight: 400;
+  .message h2 {
+    font-size: 2em;
+    font-weight: 500;
     line-height: 1.5;
+    color:#ffffff;
   }
   @media (max-width: 480px) {
     .values-section {
@@ -1549,7 +1576,6 @@ section {
         height: auto;
     }
 }
-
 
 
  /* Testimonials Section */
@@ -1675,14 +1701,14 @@ section {
     }
 
     #about-us h2 {
-        font-size: 2.5em;
+        
         color: #8cc63f; /* Highlighted color for headers */
         margin-bottom: 20px;
         font-weight: 500;
     }
 
     #about-us p {
-        font-size: 1.1em;
+        
         line-height: 1.6;
         margin-bottom: 15px;
     }
