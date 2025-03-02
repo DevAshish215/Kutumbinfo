@@ -8,7 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Error loading navbar:", err));
 });
 
-
+// ============================
+// Fetch and Insert Footer
+// ============================
+fetch('footer.html')
+.then(response => response.text())
+.then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+});
 
 // ============================
 // Counter Section Animation
@@ -153,7 +160,28 @@ document.querySelectorAll(".navbar .dropdown > a").forEach((dropdownLink) => {
 });
 
 
-
+//Navbar Links
 function handleWebDevelopmentClick() {
-    window.location.href = "Pages/web_dev.html";
+    window.location.href = "../Pages/web_dev.html";
 }
+
+function handleMobileAppDevClick() {
+    window.location.href = "../Pages/mob_app.html";
+}
+
+function handleCustomSoftDevClick() {
+    window.location.href = "../Pages/custom_soft.html";
+}
+
+function handleUIUXDesignClick() {
+    window.location.href = "../Pages/ui_ux_design.html";
+}
+
+function handleAPIdevClick() {
+    window.location.href = "../Pages/api_dev.html";
+}
+
+function handleMaintainanceSupportClick() {
+    window.location.href = "../Pages/maintain_support.html";
+}
+
