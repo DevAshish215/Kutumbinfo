@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../Pages Css/web_dev.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="../navbar.html" as="fetch" crossorigin="anonymous">
       
 </head>
 <style>
@@ -46,7 +47,7 @@
             <p class="text-paragraph">With years of industry expertise, our skilled development team is ready to tackle any web project, whether it's e-commerce, e-learning, or beyond. We craft tailored solutions that align with your business objectives, leveraging cutting-edge web technologies to ensure performance, security, and scalability. Whether you need hosting, a content management system, or an advanced e-commerce platform, we help you choose the right tools to drive success.</p>
             <p class="text-paragraph">Web development is more than just building applications—it’s about creating seamless, engaging, and high-performing digital experiences. While many web solutions may appear similar, we take a personalized approach, understanding the unique factors that contribute to success in each scenario.</p>
 
-
+        <!-- Service Section  -->
                 <div class="services-container">
                     <div class="service-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/4774/4774185.png" alt="Web Development" class="service-icon">
@@ -197,68 +198,10 @@
 
      <!-- Footer Section -->
     <div id="footer-placeholder"></div>
-    <script>
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-    </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        fetch("../navbar.html")
-
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data, "text/html");
-                const navbarPlaceholder = document.getElementById("navbar-placeholder");
-                navbarPlaceholder.innerHTML = doc.querySelector(".navbar").outerHTML;
-    
-                // Ensure the logo path is correctly updated
-                const logo = navbarPlaceholder.querySelector(".logo img");
-                if (logo) {
-                    logo.src = "../images/" + logo.src.split("/").pop();
-                }
-    
-                const menuToggle = navbarPlaceholder.querySelector(".menu-toggle");
-                const navbar = navbarPlaceholder.querySelector(".navbar");
-                const navLinks = navbarPlaceholder.querySelector(".nav-links");
-                const sections = document.querySelectorAll(".main-container > section, #footer-placeholder");
 
     
-                if (menuToggle && navbar) {
-                    menuToggle.addEventListener("click", () => {
-                        // Toggle the navigation menu visibility
-                        navbar.classList.toggle("show");
-                        menuToggle.classList.toggle("open");
-    
-                        // Show/hide the navigation links
-                        if (navLinks) {
-                            navLinks.classList.toggle("show");
-                        }
-    
-                        // Hide all sections except the navbar
-                        sections.forEach(section => {
-                            section.classList.toggle("hidden");
-                        });
-                    });
-                }
-    
-                // Fix Azlogic and Webakriti logo paths
-                const additionalLogos = navbarPlaceholder.querySelectorAll("img");
-                additionalLogos.forEach(img => {
-                    if (img.src.includes("azlogic.png") || img.src.includes("webakrutilogo.svg")) {
-                        img.src = "../images/" + img.src.split("/").pop();
-                    }
-                });
-            })
-            .catch(error => console.error("Error loading navbar:", error));
-    });
-    </script>
-    
-    <script src="Pages js/web_dev.js" defer></script>
+    <script src="../Pages js/services.js" defer></script>
+
     
 </body>
 </html>
